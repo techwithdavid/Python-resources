@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Sample</title>
+
+        <!-- Load Bootstrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+        <!-- Load App Script -->
+        <script src="{% static 'simple_api/app.js' %}"></script>
+    </head>
+    <body class="container">
+        <h1 id="message" class="my-3">Message will show here</h1>
+        <form id="sample-form" class="my-3">
+            <input id="sample-input" type="text" class="my-3">
+            <input id="sample-button" type="submit" value="Submit" class="my-3 btn btn-primary">
+        </form>
+    </body>
+</html>

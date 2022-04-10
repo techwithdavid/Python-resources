@@ -1,0 +1,2 @@
+# UseCsrfWithAjax
+This is the sample source code referenced in the following article: [https://www.erickmccollum.com/2020/12/19/use-django-csrf-ajax.html](https://www.erickmccollum.com/2020/12/19/use-django-csrf-ajax.html).
