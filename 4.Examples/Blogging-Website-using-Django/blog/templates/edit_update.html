@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+    {%  block title  %}
+    Edit Post
+    {% endblock %}
+    {% block content %}
+{% if user.is_authenticated %}
+
+        <h1>
+        Edit Your Blog Post...
+        </h1>
+        </br>
+
+        <table>
+      <div class="form-group">
+        <form method="POST" enctype="multipart/form-data">
+                {% csrf_token%}
+        {{ form.as_table }}
+
+                 </div>
+
+
+        </table>
+                <button class="btn btn-secondary" type="submit"> Update</button>
+        </form>
+
+    {% else %}
+    <h1> Acess Denied!! Please Login First.</h1>
+{% endif %}
+{% endblock %}

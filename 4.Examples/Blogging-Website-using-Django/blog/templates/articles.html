@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+ {%  block title  %}
+{{ post.title }}
+{% endblock %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+<div class="container ">
+
+    <h1>
+        {{ post.title }}
+    </h1>
+    <small>
+
+        By: {{ post.author }} - {{ post.published_date }}
+        {% if user.is_authenticated %}
+            -<a href="{% url 'update' post.pk %}" > Update</a> -
+            <small><a href="{% url 'delete' post.pk %}" > Delete</a> </small>
+
+        {% endif %}
+
+    </small> <br/>
+    <hr> <br/>
+
+</head>
+{% if post.header_image %}
+    <img src="{{ post.header_image.url }}" <br/>
+        <br/>
+{% endif %}
+{{ post.content|safe }}
+</body>
+    <br/>
+    <br/>
+    <hr>
+    <h5> Comments</h5>
+    <br/>
+{% if not post.comments.all %}
+    No Comments...
+        <br/>
+<a href="{% url 'comment' post.pk %}"> Add Comment</a>
+    <hr>
+{% else %}
+    <a href="{% url 'comment' post.pk %}"> Add Comment</a>
+    <br/>
+    <br/>
+
+    {% for comment in post.comments.all %}
+    <strong>{{ comment.name }} -
+    {{ comment.date_added }}
+    </strong>
+    <br/>
+    {{ comment.body }}
+            <br/>
+
+    {% endfor %}
+    <hr>
+
+
+{% endif %}
+    <br/>
+
+    <a href="{% url 'home' %}" class="btn btn-outline-secondary"> Back</a>
+    </div>
+</html>
+{% endblock %}

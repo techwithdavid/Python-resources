@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+    <style>
+    .social-media{
+        transition: color 0.2s;
+        text-decoration:none;
+        margin: 0 40px
+
+    }
+    .social-media:hover{
+        color:#3903fc
+    }
+    h2{text-align: center;}
+    h3{text-align: center;}
+    .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+    img {
+        border: 1px solid #555;
+
+  border-radius: 80%;
+}
+    </style>
+    <h1>About Me.. </h1>
+    <br/>
+    {% for item in all %}
+
+    <img src="{{item.profile_pic.url}}" width="200", height="200" alt="Avatar" class="center">
+        <br/> <br/>
+        <h2>{{ item.name }}</h2>
+        <br/>
+        <br/>
+        <h3>{{ item.bio}}</h3>
+        <br/><br/>
+        <div class="text-center">
+        <a class = "social-media" href="{{ item.twitter }}" target="_blank">
+        <ion-icon name="logo-twitter" size="large"></ion-icon>
+        </a>
+        <a class = "social-media" href="{{ item.facebook }}" target="_blank">
+        <ion-icon name="logo-facebook" size="large"></ion-icon>
+        </a>
+        <a class = "social-media" href="{{ item.linkdin }}" target="_blank">
+        <ion-icon name="logo-linkedin" size="large"></ion-icon>
+        </a>
+        <a class = "social-media" href="{{ item.github }}" target="_blank">
+        <ion-icon name="logo-github" size="large"></ion-icon>
+        </a>
+        </div>
+
+    {% endfor %}
+
+
+{% endblock %}

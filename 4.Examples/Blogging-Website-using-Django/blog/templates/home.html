@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Bivid Blogs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+
+</head>
+<body>
+<div class="container ">
+    Welcome to Bivid Blogs...
+<br/>
+    {% for post in object_list %}
+        <h1><a href="{% url 'article-detail' post.pk %}"> {{ post.title }}  </a></h1>-
+       <br/>
+            {{ post.topic }}
+
+        {% if user.is_authenticated %}
+
+            -<small><a href="{% url 'update' post.pk %}" > Update</a> </small>
+            -<small><a href="{% url 'delete' post.pk %}" > Delete</a> </small>
+        {% endif %}
+            <br/>{{ post.published_date }}
+        <br/>
+        {{ post.content|slice:":200"|safe}}
+
+    {% endfor %}
+</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+</body>
+</div>
+</html>
+{% endblock %}
